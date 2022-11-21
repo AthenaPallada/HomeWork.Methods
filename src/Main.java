@@ -24,19 +24,19 @@ public class Main {
             return "lite";
         }
     }
-    public static void distance(int deliveryDistance) {
-        if (deliveryDistance < 20) {
-            System.out.println("Потребуется сутки для доставки");
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.println("Потребуется дней: 2");
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            System.out.println("Потребуется дней: 3");
-        }
-    }
     public static void installationOS(int type, int deviceYear) {
         String os = getType(type);
         String typeOfVersion = getTypeOfVersion(deviceYear);
         System.out.println("Установите " + typeOfVersion + " версию для приложения " + os);
+    }
+    public static int calcDistance(int deliveryDistance) {
+        int deliveryDays = 1;
+        int interval = 40;
+        int startInterval = 20;
+        if (deliveryDistance > startInterval) {
+            deliveryDays = deliveryDays + (int) Math.ceil((deliveryDistance - startInterval) / (double) interval);
+        }
+        return deliveryDays;
     }
     public static void main(String[] args) {
         //Задание 1
@@ -51,6 +51,8 @@ public class Main {
         // Задание 3
         System.out.println("Задание 3");
         int deliveryDistance = 95;
-        distance(deliveryDistance);
+        int deliveryDays = calcDistance(deliveryDistance);
+        calcDistance(deliveryDistance);
+        System.out.println("Потребуется дней: " + deliveryDays);
     }
 }
