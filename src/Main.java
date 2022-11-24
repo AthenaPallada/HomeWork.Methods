@@ -1,9 +1,7 @@
 import java.time.LocalDate;
 public class Main {
     public static void checksYear(int year) {
-        if(year % 4 == 0 && year % 100 > 0) {
-            System.out.println(year + " номер года — високосный год");
-        } else if(year % 100 == 0 && year % 400 == 0) {
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " номер года — високосный год");
         } else {
             System.out.println(year + " номер года — не високосный год");
